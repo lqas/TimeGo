@@ -11,6 +11,8 @@ final class AutoClockInService {
     private var resyncTask: Task<Void, Never>?
     /// Blocks session-publisher resync while markNotified* is writing flags.
     private var isMutatingNotifyFlags = false
+    /// Prevents start() → session publish → evaluate → start() recursion.
+    private var isEvaluatingNetworkClockIn = false
 
     init(store: SessionStore, network: NetworkMonitor, wake: WakeMonitor) {
         self.store = store
@@ -51,7 +53,12 @@ final class AutoClockInService {
                 guard let self else { return }
                 if session == nil {
                     self.gate.noteSessionCleared()
-                    self.evaluateNetworkClockIn()
+                    // Defer: never evaluate inside a session publisher callback.
+                    // Synchronous evaluate → start used to recurse until stack overflow
+                    // (app "vanished" after overnight / morning unlock).
+                    Task { @MainActor [weak self] in
+                        self?.evaluateNetworkClockIn()
+                    }
                 }
                 if self.isMutatingNotifyFlags {
                     return
@@ -104,6 +111,10 @@ final class AutoClockInService {
     }
 
     private func evaluateNetworkClockIn() {
+        guard !isEvaluatingNetworkClockIn else { return }
+        isEvaluatingNetworkClockIn = true
+        defer { isEvaluatingNetworkClockIn = false }
+
         let onCompany = network.matchesCompanyNetwork(settings: store.settings)
         let shouldStart = gate.shouldStart(
             onCompany: onCompany,

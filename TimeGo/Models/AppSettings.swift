@@ -22,7 +22,7 @@ struct AppSettings: Codable, Equatable {
     /// UI language. Defaults to following the Mac system language.
     var language: AppLanguagePreference = .system
     /// Company OA / attendance URL for quick open from the menu bar.
-    var companyOAURL: String = "https://i.mdpi.cn/team/attendance"
+    var companyOAURL: String = ""
 
     var workDuration: TimeInterval {
         workHours * 3600
@@ -68,7 +68,7 @@ struct AppSettings: Codable, Equatable {
         requireCompanyNetworkForWake: Bool = true,
         launchAtLogin: Bool = true,
         language: AppLanguagePreference = .system,
-        companyOAURL: String = "https://i.mdpi.cn/team/attendance"
+        companyOAURL: String = ""
     ) {
         self.workHours = workHours
         self.lunchHours = lunchHours
@@ -97,11 +97,12 @@ struct AppSettings: Codable, Equatable {
         launchAtLogin = try c.decodeIfPresent(Bool.self, forKey: .launchAtLogin) ?? true
         language = try c.decodeIfPresent(AppLanguagePreference.self, forKey: .language) ?? .system
         let decodedOA = try c.decodeIfPresent(String.self, forKey: .companyOAURL)?
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        if let decodedOA, !decodedOA.isEmpty {
-            companyOAURL = decodedOA
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        // Drop the former built-in default so it no longer appears as a filled value.
+        if decodedOA == "https://i.mdpi.cn/team/attendance" {
+            companyOAURL = ""
         } else {
-            companyOAURL = "https://i.mdpi.cn/team/attendance"
+            companyOAURL = decodedOA
         }
     }
 

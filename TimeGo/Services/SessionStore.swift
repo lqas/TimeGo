@@ -71,7 +71,8 @@ final class SessionStore: ObservableObject {
 
     @discardableResult
     func start(at date: Date = .now, source: ClockInSource) -> Bool {
-        reconcileDayBoundary()
+        // Replace in one assignment. Do NOT clear to nil first — that synchronously
+        // re-enters auto clock-in (session sink) and can stack-overflow on wake.
         let day = WorkSession.dayKey(for: date)
         session = WorkSession(dayKey: day, startTime: date, source: source)
         persistSession()
@@ -81,7 +82,6 @@ final class SessionStore: ObservableObject {
     /// - Parameter asManualSource: When correcting an existing session's time, keep the
     ///   original source unless the user explicitly marks it manual.
     func setStartTime(_ date: Date, asManualSource: Bool = true) {
-        reconcileDayBoundary()
         if var current = session, current.dayKey == WorkSession.dayKey(for: date) {
             let sameMinute = Calendar.current.isDate(current.startTime, equalTo: date, toGranularity: .minute)
             if sameMinute { return }
