@@ -1,10 +1,12 @@
 # TimeGo
 
-macOS 菜单栏弹性工时助手：到公司后自动开始计时，到点提醒你可以下班。
+**English** | [简体中文](./README.zh-CN.md)
 
-适合「几点到都行，但干满目标工时再走」的弹性上下班。默认按 **8 小时工时 + 1 小时午休** 计算建议下班时间，可在设置里修改。
+A macOS menu bar helper for flexible work hours: start the timer when you arrive at the office, and get reminded when it’s time to leave.
 
-**需要 macOS 14 或更高版本。**
+Built for “arrive whenever, leave after you hit your target hours.” By default it suggests a leave time based on **8 hours of work + 1 hour lunch**, both adjustable in Settings.
+
+**Requires macOS 14 or later.**
 
 
 <img width="200" height="100%" alt="CleanShot 2026-07-22 at 16 29 29@2x" src="https://github.com/user-attachments/assets/b8391fc4-bf58-4e30-9a1c-463e3c6a3c5e" />
@@ -14,85 +16,85 @@ macOS 菜单栏弹性工时助手：到公司后自动开始计时，到点提�
 
 ---
 
-## 能做什么
+## Features
 
-- 菜单栏随时看到：**还剩多久 / 已加班多久**
-- **自动开始计时**：连上公司 Wi‑Fi 或公司网 IP，或解锁/唤醒电脑时（可设置成仅在公司网才自动开始，避免在家误触发）
-- **手动调整**：改上班时间、设为现在、清除今天
-- **通知**：满工时提醒；也可开启下班前提前提醒（默认提前 5 分钟）
-- **一键打开公司考勤 / OA**（设置里可改网址）
-- **中文 / English**，默认跟随电脑语言
-- 可设为 **开机登录后自动启动**
-- 数据只保存在你这台 Mac 上，不会上传
-
----
-
-## 怎么安装
-
-1. 从 [Releases](../../releases) 下载最新的 `TimeGo-*.zip` 并解压  
-2. 把 `TimeGo.app` 拖到「应用程序」文件夹  
-3. **第一次打开**：在 Finder 里对图标 **右键 → 打开** → 再点「打开」  
-   - 若系统仍拦截：打开「系统设置 → 隐私与安全性」，点「仍要打开」  
-4. 菜单栏出现 TimeGo 图标后即可使用  
-
-> 不要只双击未授权的 App，否则可能被 macOS 直接拦住。右键打开一次之后，以后就可以正常点开。
+- Menu bar always shows **time remaining / overtime so far**
+- **Auto start**: when you join the company Wi‑Fi or company IP, or when you unlock/wake the Mac (optional: only auto-start on the company network, so home unlocks don’t trigger it)
+- **Manual control**: edit start time, set to now, or clear today
+- **Notifications**: alert when target hours are done; optional early leave reminder (default 5 minutes before)
+- **One-click company attendance / OA** (URL configurable in Settings)
+- **Chinese / English**, follows system language by default
+- Optional **launch at login**
+- Data stays on your Mac only — nothing is uploaded
 
 ---
 
-## 第一次建议这样设
+## Install
 
-1. 点菜单栏图标 → **设置**  
-2. 打开 **登录时自动启动**（若提示要批准：系统设置 → 通用 → 登录项 → 允许 TimeGo）  
-3. 填写公司 **Wi‑Fi 名称** 和/或 **IP 前缀**（在公司时也可点「填入当前…」）  
-4. 允许 **通知**（到点和下班前提醒都靠它）  
-5. 如果要用 Wi‑Fi 名称识别公司网，系统可能要求 **定位权限**；不想开定位的话，只填 IP 前缀也可以  
+1. Download the latest `TimeGo-*.zip` from [Releases](../../releases) and unzip it  
+2. Drag `TimeGo.app` into the Applications folder  
+3. **First launch**: in Finder, **Control-click → Open**, then confirm Open  
+   - If macOS still blocks it: System Settings → Privacy & Security → Open Anyway  
+4. Use the app once the TimeGo icon appears in the menu bar  
 
-可在设置里填写自己的 OA / 考勤链接；填了之后菜单里会出现「打开考勤」。
-
----
-
-## 日常怎么用
-
-- **自动**：到公司连上网（或解锁电脑）后，一般会自己开始计时  
-- **手动**：面板里点「现在开始上班」，或输入上班时间  
-- **看进度**：菜单栏显示剩余时间；到点后显示加班时长  
-- **改时间**：在「校正时间」里改小时和分钟（输完小时会自动跳到分钟）  
-- **查历史考勤**：点「打开考勤」，用浏览器打开你设置的 OA 页面  
-- **下班提醒**：满工时会通知；若开了提前提醒，会再早几分钟提醒一次  
+> Don’t only double-click an unsigned app — macOS may block it. After one Control-click Open, normal launches work.
 
 ---
 
-## 自动开始的规则（简要）
+## First-time setup
 
-今天还没开始计时时：
+1. Click the menu bar icon → **Settings**  
+2. Turn on **Launch at Login** (if prompted: System Settings → General → Login Items → allow TimeGo)  
+3. Enter your company **Wi‑Fi name** and/or **IP prefix** (or use “Fill current…” while at the office)  
+4. Allow **Notifications** (needed for leave and early reminders)  
+5. Matching by Wi‑Fi name may require **Location** permission; if you prefer not to grant it, IP prefix alone is enough  
 
-- 连上匹配的公司 Wi‑Fi 或公司 IP → 自动开始  
-- 唤醒 / 解锁电脑时 → 也可能自动开始（若已配置公司网，默认要求当前已在公司网）  
-- 打开 App 时若已在公司网 → 也会开始  
-
-任何时候都可以手动改上班时间。跨过自然日后，会按新的一天重新计时。
-
----
-
-## 隐私说明
-
-- 上班时间、设置等只存在本机  
-- 不会把考勤或位置发到服务器  
-- 定位权限仅用于读取 Wi‑Fi 名称（可选）  
-- 「打开考勤」只是用系统浏览器打开你填写的网址  
+You can also paste your OA / attendance URL in Settings; once set, the menu shows **Open Attendance**.
 
 ---
 
-## 常见问题
+## Daily use
 
-**菜单栏找不到图标？**  
-看一下菜单栏右侧是否被挤掉；或打开「应用程序」里的 TimeGo。可在设置里打开登录时启动，避免每次手动开。
+- **Auto**: after you join the company network (or unlock the Mac), timing usually starts by itself  
+- **Manual**: tap “Start work now” in the panel, or type a start time  
+- **Progress**: menu bar shows remaining time; after the target it shows overtime  
+- **Edit time**: adjust hours and minutes under time correction (after the hour field, focus jumps to minutes)  
+- **Attendance history**: tap **Open Attendance** to open your OA URL in the browser  
+- **Leave reminders**: notify when hours are complete; with early reminder on, you’ll get an earlier ping too  
 
-**没有自动开始？**  
-确认已填公司 Wi‑Fi / IP，且当前确实连着公司网；也可以先手动开始，再校正时间。
+---
 
-**收不到通知？**  
-到「系统设置 → 通知 → TimeGo」打开允许通知，并在 App 设置里确认已开启满工时 / 提前提醒。
+## Auto-start rules (short)
 
-**第一次打不开？**  
-用 Finder **右键 → 打开**，不要只双击。这是未做 App Store 公证时的正常情况。
+While you haven’t started timing today:
+
+- Join a matching company Wi‑Fi or company IP → auto start  
+- Wake / unlock → may also auto start (if a company network is configured, it usually requires you to already be on that network)  
+- Launch the app while already on the company network → starts as well  
+
+You can always edit the start time manually. After midnight, timing resets for the new day.
+
+---
+
+## Privacy
+
+- Start time and settings stay on this Mac  
+- Attendance or location data is never sent to a server  
+- Location permission is only used to read the Wi‑Fi name (optional)  
+- **Open Attendance** simply opens the URL you entered in the system browser  
+
+---
+
+## FAQ
+
+**Can’t find the menu bar icon?**  
+Check whether the right side of the menu bar is crowded; or open TimeGo from Applications. Enable launch at login in Settings so you don’t have to start it by hand every time.
+
+**Didn’t auto-start?**  
+Confirm company Wi‑Fi / IP is filled in and you’re actually on the company network; or start manually and correct the time.
+
+**No notifications?**  
+System Settings → Notifications → TimeGo → allow notifications, and in the app Settings confirm leave / early reminders are enabled.
+
+**Won’t open the first time?**  
+In Finder use **Control-click → Open**, not only a double-click. That’s normal for apps that aren’t App Store–notarized.
