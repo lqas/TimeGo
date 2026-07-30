@@ -8,11 +8,9 @@ Built for “arrive whenever, leave after you hit your target hours.” By defau
 
 **Requires macOS 14 or later.**
 
-
-<img width="200" height="100%" alt="CleanShot 2026-07-22 at 16 29 29@2x" src="https://github.com/user-attachments/assets/b8391fc4-bf58-4e30-9a1c-463e3c6a3c5e" />
-<img width="200" height="100%" alt="CleanShot 2026-07-22 at 16 29 48@2x" src="https://github.com/user-attachments/assets/0d56c118-d00a-4b3a-9d2f-a6e6092447be" />
-<img width="200" height="100%" alt="CleanShot 2026-07-22 at 16 30 39@2x" src="https://github.com/user-attachments/assets/46407073-1c2e-47ec-ae40-021827b52fea" />
-<img width="200" height="100%" alt="CleanShot 2026-07-22 at 16 32 05@2x" src="https://github.com/user-attachments/assets/4fce5eb3-df45-411e-b5ac-71208fb0f6d5" />
+<img width="200" height="100%" alt="CleanShot 2026-07-30 at 10 06 15@2x" src="https://github.com/user-attachments/assets/6c03db78-aeaf-458e-85a0-1b8ba6802035" />
+<img width="200" height="100%" alt="CleanShot 2026-07-30 at 10 06 35@2x" src="https://github.com/user-attachments/assets/f3673402-15e4-4ff4-b909-0837350e7eb6" />
+<img width="200" height="100%" alt="CleanShot 2026-07-30 at 10 06 43@2x" src="https://github.com/user-attachments/assets/ff698734-07b9-4e77-ae98-863051e94f13" />
 
 ---
 
